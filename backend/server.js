@@ -3,7 +3,8 @@ import path from "path"
 import { fileURLToPath } from "url"
 import dotenv from "dotenv"
 import { InferenceClient } from "@huggingface/inference"
-// import { HfInference } from "@huggingface/inference"
+import path from "path";
+import { fileURLToPath } from "url";
 
 dotenv.config()
 
@@ -23,7 +24,6 @@ if (process.env.NODE_ENV === "production") {
 
 // Init Hugging Face client
 const hf = new InferenceClient(process.env.HF_ACCESS_TOKEN)
-// const hf = new HfInference(process.env.HF_ACCESS_TOKEN)
 
 //Route Handler
 app.post("/api/recipe", async (req, res) => {
@@ -51,6 +51,12 @@ app.post("/api/recipe", async (req, res) => {
         res.status(500).json({ error: "Failed to get recipe" })
     }
 })
+
+// Serve frontend
+app.use(express.static(path.join(__dirname, "../frontend/dist")));
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../frontend/dist", "index.html"));
+});
 
 // Fallback: serve index.html for SPA routes
 if (process.env.NODE_ENV === "production") {
