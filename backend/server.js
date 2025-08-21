@@ -3,8 +3,6 @@ import path from "path"
 import { fileURLToPath } from "url"
 import dotenv from "dotenv"
 import { InferenceClient } from "@huggingface/inference"
-import path from "path";
-import { fileURLToPath } from "url";
 
 dotenv.config()
 
