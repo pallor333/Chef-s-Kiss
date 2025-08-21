@@ -1,0 +1,11 @@
+{
+  "scripts": {
+    "dev": "concurrently \"npm:backend-dev\" \"npm:frontend-dev\"",
+    "backend-dev": "cd backend && nodemon server.js",
+    "frontend-dev": "cd frontend && npm run dev"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.0",
+    "nodemon": "^3.0.2"
+  }
+}
