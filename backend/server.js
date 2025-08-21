@@ -52,9 +52,6 @@ app.post("/api/recipe", async (req, res) => {
 
 // Serve frontend
 app.use(express.static(path.join(__dirname, "../frontend/dist")));
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "../frontend/dist", "index.html"));
-});
 
 // Fallback: serve index.html for SPA routes
 if (process.env.NODE_ENV === "production") {
