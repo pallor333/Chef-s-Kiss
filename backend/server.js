@@ -1,3 +1,4 @@
+/*
 import express from "express"
 import path from "path"
 import { fileURLToPath } from "url"
@@ -63,3 +64,12 @@ if (process.env.NODE_ENV === "production") {
 app.listen(port, () => {
   console.log(`Server running on http://localhost:${port}`)
 })
+*/
+import express from "express";
+
+const app = express();
+app.use(express.json());
+
+app.get("/ping", (req, res) => res.send("pong"));
+
+app.listen(process.env.PORT || 8787, () => console.log("Server running"));
